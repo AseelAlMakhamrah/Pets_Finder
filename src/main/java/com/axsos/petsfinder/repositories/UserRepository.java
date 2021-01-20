@@ -4,9 +4,12 @@ import com.axsos.petsfinder.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.List;
 
+@Repository
 public interface UserRepository extends CrudRepository<User,Long> {
-//    User findByUsername(String username);
+    List<User> findAll();
+    User findByUsername(String username);
+    User findByEmail (String email);
 
 }
