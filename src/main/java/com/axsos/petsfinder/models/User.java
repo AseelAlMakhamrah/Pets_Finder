@@ -82,6 +82,14 @@ public class User {
         return id;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

@@ -30,9 +30,6 @@ public class Product {
     )
     private List<User> users;
 
-//    @OneToMany (mappedBy="products", fetch = FetchType.LAZY)
-//    private List<Cart> carts;
-
     @PrePersist
     protected void onCreate() {
         this.createdAt = new Date();

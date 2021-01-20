@@ -27,6 +27,24 @@ public class ProductServices {
     public Product getProduct(Long id) {
         return this.productRepository.findById(id).orElse(null);
     }
+    public void addProductToUser(Long product_id,Long user_id){
+        Product product=productRepository.findById(product_id).orElse(null);
+        User user=userRepository.findById(user_id).orElse(null);
+        List<Product> products=user.getProducts();
+        products.add(product);
+        user.setProducts(products);
+        userRepository.save(user);
+    }
+    public Product createProduct(Product product){
+        return productRepository.save(product);
+    }
+    public void updateProduct(Product product){
+        Product product1 = productRepository.findById(product.getId()).orElse(null);
+        assert product1 != null;
+        product1.setName(product.getName());
+        product1.setPrice(product.getPrice());
+        productRepository.save(product1);
+    }
 
 
 }
