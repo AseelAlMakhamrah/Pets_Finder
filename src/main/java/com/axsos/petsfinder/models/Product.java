@@ -22,9 +22,16 @@ public class Product {
     @Column(updatable = false)
     private Date createdAt;
     private Date updatedAt;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "carts",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> users;
 
-    @OneToMany (mappedBy="products", fetch = FetchType.LAZY)
-    private List<Cart> carts;
+//    @OneToMany (mappedBy="products", fetch = FetchType.LAZY)
+//    private List<Cart> carts;
 
     @PrePersist
     protected void onCreate() {
@@ -35,8 +42,6 @@ public class Product {
     protected void onUpdate() {
         this.updatedAt = new Date();
     }
-
-    public Product() { }
 
     public Long getId() {
         return id;
@@ -78,12 +83,12 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
-    public List<Cart> getCarts() {
-        return carts;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
 

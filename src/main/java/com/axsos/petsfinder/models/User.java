@@ -54,9 +54,16 @@ public class User {
 
     @OneToMany(mappedBy="owner", fetch=FetchType.LAZY)
     private List<Pet> pets;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "carts",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> products;
 
-    @OneToMany(mappedBy="purchaser", fetch = FetchType.LAZY)
-    private List<Cart> carts;
+//    @OneToMany(mappedBy="purchaser", fetch = FetchType.LAZY)
+//    private List<Cart> carts;
 
     @PrePersist
     protected void onCreate() {
@@ -165,13 +172,4 @@ public class User {
     public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
-
-    public List<Cart> getCarts() {
-        return carts;
-    }
-
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
-    }
-
 }
