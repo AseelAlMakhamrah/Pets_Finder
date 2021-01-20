@@ -13,7 +13,7 @@ public class Type {
     @Column
     private String name;
 
-    @OneToMany(mappedBy="types", fetch= FetchType.LAZY)
+    @OneToMany(mappedBy="type", fetch= FetchType.LAZY)
     private List<Pet> pets;
 
     @Column(updatable = false)

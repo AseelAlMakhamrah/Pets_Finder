@@ -54,6 +54,7 @@ public class User {
 
     @OneToMany(mappedBy="owner", fetch=FetchType.LAZY)
     private List<Pet> pets;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "carts",

@@ -38,7 +38,7 @@ public class Pet {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="type_id")
-    private Type types;
+    private Type type;
 
     @Column(updatable = false)
     private Date createdAt;
@@ -120,12 +120,12 @@ public class Pet {
         this.owner = owner;
     }
 
-    public Type getTypes() {
-        return types;
+    public Type getType() {
+        return type;
     }
 
-    public void setTypes(Type types) {
-        this.types = types;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public Date getCreatedAt() {
