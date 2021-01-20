@@ -12,7 +12,5 @@ import java.util.List;
 public interface PetRepository extends CrudRepository<Pet,Long> {
     List<Pet> findAll();
          List<Pet> findAllByOwner(Long id);
-
-    @Override
-    void delete(Pet pet);
+         
 }
