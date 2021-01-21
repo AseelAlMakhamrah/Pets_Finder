@@ -6,7 +6,6 @@ import com.axsos.petsfinder.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class UserService {
@@ -40,9 +39,10 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
-    public List<User> allUser() {
-        return userRepository.findAll();
-    }
+//    public List<User> allUser() {
+//
+//        return userRepository.findAll();
+//    }
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
