@@ -39,7 +39,7 @@ public class UserController {
         if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
-        userService.saveUserWithAdminRole(user);
+        userService.saveWithUserRole(user);
         return "redirect:/home";
     }
     @RequestMapping("/admin")
