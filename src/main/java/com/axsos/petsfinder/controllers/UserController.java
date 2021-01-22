@@ -1,55 +1,65 @@
 package com.axsos.petsfinder.controllers;
 
 import com.axsos.petsfinder.Validator.UserValidator;
+import com.axsos.petsfinder.models.Product;
 import com.axsos.petsfinder.models.User;
+import com.axsos.petsfinder.services.ProductServices;
 import com.axsos.petsfinder.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class UserController {
     private final UserService userService;
     private final UserValidator userValidator;
+    private final ProductServices productServices;
 
 
     // NEW
-    public UserController(UserService userService, UserValidator userValidator) {
+    public UserController(UserService userService, UserValidator userValidator,ProductServices productServices) {
         this.userService = userService;
         this.userValidator = userValidator;
+        this.productServices=productServices;
     }
-
-
+    //this method to show registration page
     @RequestMapping("/registration")
     public String registerForm(@Valid @ModelAttribute("user") User user) {
         return "registrationPage.jsp";
     }
-
+    // this method to take information from registration form to save user
     @PostMapping("/registration")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
         userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
-        userService.saveUserWithAdminRole(user);
-        return "redirect:/home";
+        else {
+            if(userService.allUsers().size() == 0) {
+                userService.saveUserWithAdminRole(user);
+                return "redirect:/login";
+            }
+            else{
+            userService.saveWithUserRole(user);
+            return "redirect:/login";
+        }
+        }
+
     }
+    //this method to show admin page
     @RequestMapping("/admin")
     public String adminPage(Principal principal, Model model) {
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "adminPage.jsp";
     }
-
-
+    //this method to check the login
     @RequestMapping("/login")
     public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
         if(error != null) {
@@ -66,6 +76,18 @@ public class UserController {
         // 1
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
+        return "homePage.jsp";
+    }
+    // this method for check and go to admin page
+    @RequestMapping( "/adminPage/{id}")
+    public String adminPage( Model model, HttpSession session, @PathVariable("id")Long id) {
+        User user= userService.findById(id);
+        List<Product> allProducts= productServices.allProduct();
+        model.addAttribute("allProducts",allProducts);
+        model.addAttribute("user",user);
+        if(user.getRoles().size() == 2) {
+            return "adminPage.jsp";
+        }
         return "homePage.jsp";
     }
 }

@@ -1,14 +1,18 @@
 package com.axsos.petsfinder.services;
 
+import com.axsos.petsfinder.models.Role;
 import com.axsos.petsfinder.models.User;
 import com.axsos.petsfinder.repositories.RoleRepository;
 import com.axsos.petsfinder.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserService {
+
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -33,17 +37,24 @@ public class UserService {
         user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
         userRepository.save(user);
     }
+//    public boolean findByAdmins(){
+//        List<Role> permission=roleRepository.findAll();
+//
+//    }
 
     // 3
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+    public List<User> allUsers() {
+        return  userRepository.findAll();
+    }
+//    public List<User> allUser();
 
-//    public List<User> allUser() {
-//
-//        return userRepository.findAll();
-//    }
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+    public User findById(Long id){
+        return userRepository.findUserById(id);
     }
 }
