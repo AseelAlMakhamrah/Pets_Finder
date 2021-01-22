@@ -57,7 +57,7 @@ public class UserController {
     public String adminPage(Principal principal, Model model) {
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-        return "adminPage.jsp";
+        return "admindashboard.jsp";
     }
     //this method to check the login
     @RequestMapping("/login")
