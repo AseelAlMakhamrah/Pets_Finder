@@ -1,6 +1,9 @@
 package com.axsos.petsfinder.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
@@ -11,38 +14,55 @@ public class User {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
-
     private Long id;
-    @Column
-    @Size(min=1)
+
+
+
+    @Size(min=2)
+    @Pattern(regexp = "[a-zA-Z]+", message = "Must contain only letters")
     private String firstName;
 
-    @Column
-    @Size(min=1)
+
+
+    @Size(min=2)
+    @Pattern(regexp = "[a-zA-Z]+", message = "Must contain only letters")
     private String lastName;
 
+
     @Column
+    @Size(min=3)
+    @Pattern(regexp = "[a-zA-Z1-9]+", message = "Must contain only letters OR numbers")
+    private String username;
+
+
+
+    @Email(message = "Not a valid email format")
     private String email;
 
+
+
+    @Pattern(regexp = "[a-zA-Z]+", message = "Must contain only letters")
     private String Location;
 
-    @Column
+
+
     @Size(min=10)
     private String phoneNumber;
 
-    @Column
-    @Size(min=5, message="Password must be greater than 5 characters")
+
+
+    @Size(min=8, message="Password must be greater than 8 characters")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{6,}$",
+            message = "Not a valid password format. Please check the requirements and try again")
     private String password;
 
     @Transient
-    @Size(min=5, message="Password must be at least 5 characters!")
+    @Size(min=8, message="Password must be at least 8 characters!")
     private String passwordConfirmation;
 
 
     @Column(updatable=false)
     private Date createdAt;
-
-    @Column
     private Date updatedAt;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -63,8 +83,6 @@ public class User {
     )
     private List<Product> products;
 
-//    @OneToMany(mappedBy="purchaser", fetch = FetchType.LAZY)
-//    private List<Cart> carts;
 
     @PrePersist
     protected void onCreate() {
@@ -94,6 +112,7 @@ public class User {
         this.id = id;
     }
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -108,6 +127,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -181,4 +208,7 @@ public class User {
     public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
+
+
+
 }

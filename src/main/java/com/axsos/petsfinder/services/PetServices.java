@@ -2,7 +2,9 @@ package com.axsos.petsfinder.services;
 
 
 import com.axsos.petsfinder.models.Pet;
+import com.axsos.petsfinder.models.User;
 import com.axsos.petsfinder.repositories.PetRepository;
+import com.axsos.petsfinder.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,12 +13,16 @@ import java.util.Optional;
 @Service
 public class PetServices {
     private PetRepository petRepository;
+    private UserRepository userRepository;
 
-    public PetServices(PetRepository petRepository) {
+    public PetServices(PetRepository petRepository, UserRepository userRepository) {
         this.petRepository = petRepository;
+        this.userRepository = userRepository;
     }
 
-    public Pet addPet(Pet pet) {
+    public Pet addPet(Pet pet, Long id) {
+        User user1 = userRepository.findUserById(id);
+        pet.setOwner(user1);
         return petRepository.save(pet);
     }
     public List<Pet> allPets() { return petRepository.findAll();

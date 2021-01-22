@@ -19,46 +19,26 @@ public class Role {
     @Column(updatable = false)
     private Date createdAt;
     private Date updatedAt;
-    public Role() {}
+    public Role() {
+    }
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public List<User> getUsers() {
         return users;
     }
-
     public void setUsers(List<User> users) {
         this.users = users;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
     @PrePersist
     protected void onCreate() {
