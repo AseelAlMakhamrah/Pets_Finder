@@ -54,10 +54,29 @@ public class UserController {
     }
     //this method to show admin page
     @RequestMapping("/admin")
-    public String adminPage(Principal principal, Model model) {
+    public String adminPage(Principal principal, Model model,HttpSession session,@Valid @ModelAttribute("product") Product product,BindingResult result) {
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-        return "admindashboard.jsp";
+        User user = (User) session.getAttribute("user1");
+        User user1=userService.findById(user.getId()) ;
+        List<User> users= userService.allUsers();
+        List<Product> products=productServices.allProduct();
+//        model.addAttribute("user_test",user1.ro);
+        model.addAttribute("users",users);
+        model.addAttribute("usersAsUsers",userService.findAllUser());
+
+        if(user1 !=null) {
+        if(user1.getRoles().size() == 2) {
+            return "admindashboard.jsp";
+        }
+        else {
+            return "admindashboard.jsp";
+        }
+        }
+        else{
+            return "redirect:/login";
+
+        }
     }
     //this method to check the login
     @RequestMapping("/login")
@@ -72,9 +91,12 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/", "/home"})
-    public String home(Principal principal, Model model) {
+    public String home(Principal principal, Model model,HttpSession session) {
         // 1
         String username = principal.getName();
+        User user1 = userService.findByUsername(username);
+        session.setAttribute("user1",user1);
+        model.addAttribute("products",productServices.allProduct());
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";
     }
@@ -89,5 +111,17 @@ public class UserController {
             return "adminPage.jsp";
         }
         return "homePage.jsp";
+    }
+    @RequestMapping(value = "/makeAdmin",method = RequestMethod.POST)
+    public String makeAdmin(@RequestParam("user") Long id,Model model){
+        User user=userService.findById(id);
+        userService.updateAdmin(user);
+        return "redirect:/admin";
+    }
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public String deleteUser(@RequestParam("user") Long id,Model model){
+        User user=userService.findById(id);
+        userService.deleteUser(user);
+        return "redirect:/admin";
     }
 }

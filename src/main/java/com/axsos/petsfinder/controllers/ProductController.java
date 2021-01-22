@@ -18,18 +18,18 @@ public class ProductController {
         this.productServices = productServices;
         this.userService = userService;
     }
-//    @RequestMapping(value = "/addProduct" , method = RequestMethod.POST)
-//    public Product createProduct(@Valid @ModelAttribute("product") Product product, BindingResult result){
-//        //we need to add if statement  for to check if the user is admin or not
-//       // if the user.role.id == admin id then he can add product
-//        if(result.hasErrors()){
-//            return "to adminpage ";
-//        }
-//        else{
-//        Product newProduct = productServices.createProduct(product);
-//        return "redirect for ";
-//        }
-//    }
+    @RequestMapping(value = "/addProduct" , method = RequestMethod.POST)
+    public String createProduct(@Valid @ModelAttribute("product") Product product,BindingResult result){
+        //we need to add if statement  for to check if the user is admin or not
+       // if the user.role.id == admin id then he can add product
+        if(result.hasErrors()){
+            return "admindashboard.jsp";
+        }
+        else{
+        Product newProduct = productServices.createProduct(product);
+        return "redirect:/home";
+        }
+    }
 //    @RequestMapping("/product/{id}/delete")
 //    public String deleteEvent(@PathVariable("id")Long id){
 //        eventsService.deleteEvent(id);

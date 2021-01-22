@@ -7,6 +7,7 @@ import com.axsos.petsfinder.repositories.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -56,5 +57,19 @@ public class UserService {
     }
     public User findById(Long id){
         return userRepository.findUserById(id);
+    }
+    public void updateAdmin(User user) {
+        ArrayList<Role> roles = new ArrayList<Role>();
+//        roles.add(roleRepository.findByName("ROLE_USER"));
+//        roles.add(roleRepository.findByName("ROLE_ADMIN"));
+        user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
+        userRepository.save(user);
+    }
+    public List<Role> findAllUser(){
+        List<Role> usersAll = roleRepository.findByName("ROLE_USER");
+        return usersAll;
+    }
+    public void deleteUser(User user){
+        userRepository.deleteById(user.getId());
     }
 }

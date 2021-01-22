@@ -20,9 +20,25 @@
 <body>
 <h1>Welcome  <c:out value="${currentUser.firstName}"></c:out></h1>
 
+<h1>Welcome, <c:out value="${user1.firstName}"/></h1>
+<h1>Welcome, <c:out value="${user_test}"/></h1>
+
 <form id="logoutForm" method="POST" action="/logout">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="submit" value="Logout!" type="button" class="btn btn-outline-secondary"/>
 </form>
+<br>
+<br>
+<table border="1px">
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+    <c:forEach items="${products}" var="product">
+    <tr>
+        <td>${product.name}</td>
+        <td>${product.price}</td>
+        </c:forEach>
+</table>
 </body>
 </html>
