@@ -1,5 +1,6 @@
 package com.axsos.petsfinder.services;
 
+import com.axsos.petsfinder.models.Product;
 import com.axsos.petsfinder.models.Role;
 import com.axsos.petsfinder.models.User;
 import com.axsos.petsfinder.repositories.RoleRepository;
@@ -13,13 +14,15 @@ import java.util.List;
 
 @Service
 public class UserService {
-
+    private final ProductServices productServices;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder)     {
+
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder,ProductServices productServices)     {
         this.userRepository = userRepository;
+        this.productServices=productServices;
         this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
@@ -80,5 +83,8 @@ public class UserService {
         user1.setLocation(user.getLocation());
         user1.setPhoneNumber(user.getPhoneNumber());
         userRepository.save(user1);
+    }
+    public List<Product> findAllProduct(User user){
+        return user.getProducts();
     }
 }

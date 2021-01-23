@@ -32,18 +32,19 @@
     <tr>
         <th>Product</th>
         <th>Price</th>
+        <th>Sale</th>
     </tr>
     <c:forEach items="${products}" var="product">
         <tr>
             <td>${product.name}</td>
             <td>${product.price}</td>
-
+            <td><a href="/product/addToCart/${product.id}">Add To Cart</a></td>
         </tr>
-        <div class="col">
-            <form:form action="/addcart" method="POST" modelAttribute="cart">
-                <button type="submit" class="btn btn-info btn-sm">Add to Cart</button>
-            </form:form>
-        </div>
+<%--        <div class="col">--%>
+<%--            <form action="/product/addToCart/${product.id}" method="POST" >--%>
+<%--                <button type="submit" class="btn btn-info btn-sm">Add to Cart</button>--%>
+<%--            </form>--%>
+<%--        </div>--%>
     </c:forEach>
 </table>
 </body>

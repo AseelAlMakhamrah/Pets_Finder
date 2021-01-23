@@ -67,16 +67,15 @@ public class UserController {
         model.addAttribute("usersAsUsers",userService.findAllUser());
 
         if(user1 !=null) {
-        if(user1.getRoles().size() == 2) {
+            if(user1.getRoles().size() == 2) {
             return "admindashboard.jsp";
-        }
-        else {
+             }
+             else {
             return "admindashboard.jsp";
-        }
+             }
         }
         else{
             return "redirect:/login";
-
         }
     }
     //this method to check the login
@@ -92,7 +91,7 @@ public class UserController {
         return "login.jsp";
     }
 
-    @RequestMapping(value = {"/", "/home"})
+    @RequestMapping( "/home")
     public String home(Principal principal, Model model,HttpSession session) {
         // 1
         String username = principal.getName();
@@ -146,7 +145,6 @@ public class UserController {
         }else{
             userService.updateUser(user);
             return "redirect:/home";
-
         }
 
     }

@@ -10,7 +10,6 @@ public class Cart {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean purchased;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id")
@@ -34,13 +33,13 @@ public class Cart {
         this.id = id;
     }
 
-    public boolean isPurchased() {
-        return purchased;
-    }
+//    public boolean isPurchased() {
+//        return purchased;
+//    }
 
-    public void setPurchased(boolean purchased) {
-        this.purchased = purchased;
-    }
+//    public void setPurchased(boolean purchased) {
+//        this.purchased = purchased;
+//    }
 
     public Product getProducts() {
         return product;

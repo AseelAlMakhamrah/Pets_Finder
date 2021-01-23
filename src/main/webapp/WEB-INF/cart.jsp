@@ -16,36 +16,26 @@
 
 <table cellpadding="2" cellspacing="2" border="1">
     <tr>
-
-        <th>Id</th>
+        <th>id</th>
         <th>Name</th>
         <th>Photo</th>
         <th>Price</th>
-        <th>Quantity</th>
-        <th>Sub Total</th>
-        <th>Option</th>
     </tr>
     <c:set var="total" value="0"></c:set>
-    <c:forEach var="item" items="${sessionScope.cart }">
-        <c:set var="total" value="${total + item.product.price * item.quantity }"></c:set>
+    <c:forEach  items="${products}" var="item" >
+        <c:set var="total" value="${total + item.price}"></c:set>
         <tr>
 
-            <td>${item.product.id }</td>
-            <td>${item.product.name }</td>
+            <td>${item.id }</td>
+            <td>${item.name}</td>
             <td>
                 <img src="${pageContext.request.contextPath }/${item.product.photo }" width="120">
             </td>
-            <td>${item.product.price }</td>
-            <td>${item.quantity }</td>
-            <td>${item.product.price * item.quantity }</td>
-            <td align="center">
-<%--                <a href="${pageContext.request.contextPath }/cart?action=remove&id=${item.product.id }"--%>
-<%--                   onclick="return confirm('Are you sure?')">Remove</a>--%>
-            </td>
+            <td>${item.price }</td>
         </tr>
     </c:forEach>
     <tr>
-        <td colspan="6" align="right">Total</td>
+        <td colspan="4" align="right">Total</td>
         <td>${total }</td>
     </tr>
 </table>

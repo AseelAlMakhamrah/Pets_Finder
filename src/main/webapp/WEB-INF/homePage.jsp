@@ -93,7 +93,7 @@
 
 
 <nav class="navbar navbar-expand-lg fixed-top">
-    <a class="navbar-brand" href="/">Pet Finder</a>
+    <a class="navbar-brand" href="/home">Pet Finder</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"><i class="fa fa-caret-down text-light" style="font-size:25px;" aria-hidden="true"></i></span>
     </button>
@@ -113,7 +113,7 @@
                 <a class="nav-link " href="/cart">Cart</a>
             </li>
             <li class="nav-item mr-1">
-                <a class="nav-link " href="/user/{id}">Profile</a>
+                <a class="nav-link " href="/user/${currentUser.id}">Profile</a>
             </li>
 
         </ul>
@@ -143,7 +143,7 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Aseel </a>
+                <a href="/user/${currentUser.id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Aseel </a>
             </div>
         </div>
     </div>
@@ -157,7 +157,7 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Aseel </a>
+                <a href="/user/${currentUser.id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Aseel </a>
             </div>
         </div>
     </div>
@@ -171,7 +171,7 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> loay </a>
+                <a href="/user/${currentUser.id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> loay </a>
             </div>
         </div>
     </div>
@@ -185,7 +185,7 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Shatha </a>
+                <a href="/user/${currentUser.id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Shatha </a>
             </div>
         </div>
     </div>
@@ -199,7 +199,7 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Loay </a>
+                <a href="/user/${currentUser.id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Loay </a>
             </div>
         </div>
     </div>
@@ -213,7 +213,7 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Aseel </a>
+                <a href="/user/${currentUser.id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Aseel </a>
             </div>
         </div>
     </div>
@@ -227,7 +227,7 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> shatha </a>
+                <a href="/user/${currentUser.id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> shatha </a>
             </div>
         </div>
     </div>
@@ -241,11 +241,11 @@
             </div>
             <div class="card-footer">
                 <a href="" class="btn btn-sm mx-2 detailsBtn">Owner</a>
-                <a href="/user/{id}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Sara </a>
+                <a href="/user/${currentUser.id}}" class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="5d6b32eb39ed542d573e72a3" href="#"> Sara </a>
             </div>
         </div>
     </div>
-    <footer class=" text-center" style="height:60px; backcground-color:#231942">©-2019 || Pet Finder
+    <footer class=" text-center" style="height:60px; backcground-color:#231942">©-2021 || Pet Finder
         <i class="fa fa-envelope ml-2" aria-hidden="true"></i>
 
     </footer>

@@ -1,5 +1,6 @@
 package com.axsos.petsfinder.services;
 
+import com.axsos.petsfinder.models.Cart;
 import com.axsos.petsfinder.models.Product;
 import com.axsos.petsfinder.models.User;
 import com.axsos.petsfinder.repositories.CartRepository;
@@ -45,6 +46,22 @@ public class ProductServices {
         product1.setPrice(product.getPrice());
         productRepository.save(product1);
     }
+    public Product findById(Long id){
+        return productRepository.findProductById(id);
+    }
+    public void AddToCart(Long product_id,Long user_id){
+        User user = userRepository.findById(user_id).orElse(null);
+        Product product = productRepository.findById(product_id).orElse(null);
+        List<User> users = product.getUsers();
+        users.add(user);
+        product.setUsers(users);
+
+        productRepository.save(product);
+    }
+//    public List<> allProductForUser(User user){
+//        User user1=findById(user.getId());
+//
+//    }
 
 
 }
