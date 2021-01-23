@@ -31,14 +31,14 @@ public class PetController {
 
     @RequestMapping("/addPet")
     public String showAddPet(Principal principal, @ModelAttribute("pet")Pet pet, Model model, HttpSession session){
-        String username = principal.getName();
-        User user1 = userService.findByUsername(username);
-        session.setAttribute("user1",user1);
-        Long userId = this.userSessionId(session);
+
+//        session.setAttribute("userId",userSessionId(session));
 //        if(userId == null)
 //            return "redirect:/";
-        User user = this.userService.findById(userId);
-        model.addAttribute("user", user);
+//        Long userId = this.userSessionId(session);
+//        User user = this.userService.findById(userId);
+//        model.addAttribute("user", user);
+        model.addAttribute("pet", pet);
         return "AddPet.jsp";
     }
 
@@ -48,6 +48,7 @@ public class PetController {
 //        if(result.hasErrors()) {
 //            User user = this.userService.findById(userId);
 //            model.addAttribute("user", user);
+//            model.addAttribute("pet", pet);
 //            return "AddPet.jsp";
 //        }
         this.petServices.addPet(pet,userId);
