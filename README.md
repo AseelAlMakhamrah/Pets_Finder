@@ -9,3 +9,7 @@ In this project, the user must create an account and verify it on Gmail.
 - Animal tools such as dress, sand and animal accessories are also presented in this project
 - And also a page in which all the purchases chosen by the user are placed and their request from the admin as an order is sent to the addict with the calculation of the purchase price
 - On the other hand, there is a controller for these pages, and he is the admin that controls animal products and adds them to the store page and the special order for each user.
+
+
+
+
