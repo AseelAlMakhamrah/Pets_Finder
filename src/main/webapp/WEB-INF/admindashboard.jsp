@@ -177,19 +177,17 @@
     </table>
     <br>
     <br>
-    <p><form:errors path="product.*"/></p>
+<%--    <p><form:errors path="product.*"/></p>--%>
 
     <form:form method="POST" action="/addProduct" modelAttribute="product">
-        <p>
-            <form:label path="price">Date:</form:label>
-            <form:input type="number" path="price" class="form-control" cssStyle="width: 100px"/>
-        </p>
         <p>
             <form:label path="name">Name:</form:label>
             <form:input path="name" class="form-control" cssStyle="width: 200px"/>
         </p>
-
-
+        <p>
+            <form:label path="price">Price:</form:label>
+            <form:input type="number" path="price" class="form-control" cssStyle="width: 100px"/>
+        </p>
         <input type="submit" value="addProduct"/>
     </form:form>
     <%--<table border="1px">--%>
