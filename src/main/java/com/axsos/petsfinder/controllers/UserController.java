@@ -33,6 +33,7 @@ public class UserController {
     public String registerForm(@Valid @ModelAttribute("user") User user) {
         return "registrationPage.jsp";
     }
+
     // this method to take information from registration form to save user
     @PostMapping("/registration")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
@@ -43,11 +44,11 @@ public class UserController {
         else {
             if(userService.allUsers().size() == 0) {
                 userService.saveUserWithAdminRole(user);
-                return "redirect:/login";
+                return "redirect:/home";
             }
             else{
             userService.saveWithUserRole(user);
-            return "redirect:/login";
+            return "redirect:/home";
         }
         }
 
@@ -80,7 +81,7 @@ public class UserController {
     }
     //this method to check the login
     @RequestMapping("/login")
-    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
+    public String login(@RequestParam(value="error", required=false) String error,Principal principal,HttpSession session, @RequestParam(value="logout", required=false) String logout, Model model) {
         if(error != null) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
@@ -96,6 +97,7 @@ public class UserController {
         String username = principal.getName();
         User user1 = userService.findByUsername(username);
         session.setAttribute("user1",user1);
+        session.setAttribute("userId",user1.getId());
         model.addAttribute("products",productServices.allProduct());
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";

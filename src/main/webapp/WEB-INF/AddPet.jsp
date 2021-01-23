@@ -22,9 +22,7 @@
        /*body{*/
        /*     background-image: url('/img/bkground.jpg');*/
        /* }*/
-        .header{
-            background-color: gray;
-        }
+
     </style>
 </head>
 <body>

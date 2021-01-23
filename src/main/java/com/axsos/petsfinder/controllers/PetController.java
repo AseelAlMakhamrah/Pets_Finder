@@ -9,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.Map;
 
 @Controller
 public class PetController {
@@ -20,17 +23,37 @@ public class PetController {
         this.petServices = petServices;
         this.userService = userService;
     }
+    public Long userSessionId(HttpSession session) {
+        if(session.getAttribute("userId") == null)
+            return null;
+        return (Long)session.getAttribute("userId");
+    }
 
-    @RequestMapping("/test")
-    public String test(@ModelAttribute("pet") Pet pet){
+    @RequestMapping("/addPet")
+    public String showAddPet(Principal principal, @ModelAttribute("pet")Pet pet, Model model, HttpSession session){
+        String username = principal.getName();
+        User user1 = userService.findByUsername(username);
+        session.setAttribute("user1",user1);
+        Long userId = this.userSessionId(session);
+//        if(userId == null)
+//            return "redirect:/";
+        User user = this.userService.findById(userId);
+        model.addAttribute("user", user);
         return "AddPet.jsp";
     }
+
     @RequestMapping(value = "/addPet/{id}",method = RequestMethod.POST)
-    public String addPet(@Valid@ModelAttribute("pet")Pet pet, BindingResult result, @PathVariable("id") Long id){
-    // we need to add session to check if the user is in session
-    Pet pet1 = petServices.addPet(pet,id);
-    return "to any where i need";
+    public String addPets(@ModelAttribute("pet") Pet pet, BindingResult result, Model model, HttpSession session,  @PathVariable("id") Long id){
+        Long userId = this.userSessionId(session);
+//        if(result.hasErrors()) {
+//            User user = this.userService.findById(userId);
+//            model.addAttribute("user", user);
+//            return "AddPet.jsp";
+//        }
+        this.petServices.addPet(pet,userId);
+        return "redirect:/";
     }
+
     @RequestMapping("/pet/{id}/edit")
     public String showEditPet(@Valid@ModelAttribute("pet") Pet pet, @PathVariable("id") Long id , Model model){
     model.addAttribute("currentPet",pet);

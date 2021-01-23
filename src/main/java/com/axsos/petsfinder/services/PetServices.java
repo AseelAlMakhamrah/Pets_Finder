@@ -44,7 +44,6 @@ public class PetServices {
             Pet updatePet = optionalPet.get();
             updatePet.setName(name);
             updatePet.setAge(age);
-
             return petRepository.save(updatePet);
         } else {
             return null;
