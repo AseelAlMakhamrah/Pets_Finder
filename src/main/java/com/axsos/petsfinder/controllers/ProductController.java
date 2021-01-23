@@ -53,11 +53,11 @@ public class ProductController {
             productServices.AddToCart(product_id,user.getId());
             return "redirect:/store";
         }
-        @RequestMapping("cart")
-    public String showCart(HttpSession session,Model model){
-            User user = (User) session.getAttribute("user1");
-            List<Product> allProduct=userService.findAllProduct(user);
-            model.addAttribute("products",allProduct);
+        @RequestMapping("/cart")
+        public String showCart(HttpSession session,Model model){
+            //User user = (User) session.getAttribute("user1");
+            //List<Product> allProduct=userService.findAllProduct(user);
+            //model.addAttribute("products",allProduct);
             return "cart.jsp";
         }
 }

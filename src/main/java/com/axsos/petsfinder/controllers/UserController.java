@@ -91,7 +91,7 @@ public class UserController {
         return "login.jsp";
     }
 
-    @RequestMapping( "/home")
+    @RequestMapping( value = {"/", "/home"})
     public String home(Principal principal, Model model,HttpSession session) {
         // 1
         String username = principal.getName();
