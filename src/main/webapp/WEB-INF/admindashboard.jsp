@@ -19,6 +19,12 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+<div class="container">
+<div class="header">
+    <div class="logo">
+        <img src="img/PetsFinder.png" height="100px" width="100px" />
+    </div>
+</div>
 <h1>Welcome <c:out value="${currentUser.firstName}">!</c:out></h1>
 
 <form id="logoutForm" method="POST" action="/logout">
@@ -86,5 +92,6 @@
 
 <%--        </c:forEach>--%>
 <%--</table>--%>
+</div>
 </body>
 </html>

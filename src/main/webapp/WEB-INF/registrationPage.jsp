@@ -5,11 +5,10 @@
   Time: 6:41 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -18,17 +17,21 @@
           crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <c:url value="" var="PetsFinder"/>
-    <title>Registration Page</title>
+    <title>Pets Finder</title>
+<%--    <style>--%>
+<%--        .container{--%>
+<%--            background-image: url('/img/bkground.jpg');--%>
+<%--        }--%>
+<%--    </style>--%>
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <div class="logo">
-            <img src="img/PetsFinder.png" />
-        </div>
-    </div>
-
+<%--    <div class="header">--%>
+<%--        <div class="logo">--%>
+<%--            <img src="img/PetsFinder.png" height="100px" width="100px" />--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<center>
 <h1>Register!</h1>
 
 <p><form:errors path="user.*"/></p>
@@ -47,11 +50,11 @@
         <form:input path="username"/>
             </div>
     <div class="form-group">
-        <form:label path="email">Email:</form:label>
+        <form:label path="email">Email:     </form:label>
         <form:input path="email"/>
             </div>
     <div class="form-group">
-        <form:label path="location">Location:</form:label>
+        <form:label path="location">Location:   </form:label>
         <form:input path="location"/>
             </div>
     <div class="form-group">
@@ -60,7 +63,7 @@
             </div>
 
     <div class="form-group">
-        <form:label path="password">Password:</form:label>
+        <form:label path="password">Password:     </form:label>
         <form:password path="password"/>
             </div>
     <div class="form-group">
@@ -70,6 +73,7 @@
     <input type="submit" value="Register!" type="button" class="btn btn-outline-secondary"/>
 </form:form>
 <a href="/login">already have an account! Sign in.</a>
+</center>
 </div>
 </body>
 </html>

@@ -21,6 +21,10 @@ public class PetController {
         this.userService = userService;
     }
 
+    @RequestMapping("/test")
+    public String test(@ModelAttribute("pet") Pet pet){
+        return "AddPet.jsp";
+    }
     @RequestMapping(value = "/addPet/{id}",method = RequestMethod.POST)
     public String addPet(@Valid@ModelAttribute("pet")Pet pet, BindingResult result, @PathVariable("id") Long id){
     // we need to add session to check if the user is in session
