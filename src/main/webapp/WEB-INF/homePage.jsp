@@ -90,8 +90,6 @@
 
 <body>
 
-
-
 <nav class="navbar navbar-expand-lg fixed-top">
     <a class="navbar-brand" href="/home">Pet Finder</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,7 +101,7 @@
                 <a class="nav-link " href="/home">Home</a>
             </li>
             <li class="nav-item mr-1">
-                <a class="nav-link " href="/home">Add Pet</a>
+                <a class="nav-link " href="/addPet">Add Pet</a>
             </li>
             <li class="nav-item mr-1">
                 <a class="nav-link " href="/store">Store</a>
