@@ -127,4 +127,27 @@ public class UserController {
         userService.deleteUser(user);
         return "redirect:/admin";
     }
+    @RequestMapping("/user/{id}")
+    public String editEvent(@PathVariable("id")Long id,@ModelAttribute("user")User user,Model model,HttpSession session){
+        if(session.getAttribute("user1")==null){
+            return "redirect:/";
+        }
+        User users= (User) session.getAttribute("user1");
+        User userVisit=userService.findById(users.getId()) ;
+        model.addAttribute("user_visit",userVisit);
+        model.addAttribute("user",userService.findById(id));
+        model.addAttribute("allPets", user.getPets());
+        return "userPage.jsp";
+    }
+    @RequestMapping(value = "/user/{id}",method = RequestMethod.PUT)
+    public String updateEvent(@PathVariable("id")Long id,@Valid @ModelAttribute("user")User user,BindingResult result){
+        if(result.hasErrors()){
+            return "userPage.jsp";
+        }else{
+            userService.updateUser(user);
+            return "redirect:/home";
+
+        }
+
+    }
 }
