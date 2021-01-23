@@ -109,7 +109,7 @@
                 <a class="nav-link " href="/cart">Cart</a>
             </li>
             <li class="nav-item mr-1">
-                <a class="nav-link " href="/user/{id}">Profile</a>
+                <a class="nav-link " href="/user/${currentUser.id}">Profile</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
