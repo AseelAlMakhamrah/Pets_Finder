@@ -16,7 +16,6 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&amp;display=swap">
-    <link rel="stylesheet" href="layout.css">
 
 
 
@@ -35,15 +34,16 @@
             url("https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1150&q=80");
             width: 100%;
             height: auto;
-            background-repeat: no-repeat;
+            background-attachment: fixed;
             background-position: center;
+            background-repeat: no-repeat;
             background-size: cover
         }
         sup{
             color: red
         }
         .form-container{
-            margin: 150px auto 40px auto;
+            margin: 150px auto auto auto;
             padding: 25px 20px;
             width: 400px;
             background: rgba(0, 0, 0, 0.5);
@@ -63,10 +63,9 @@
         }
 
         @media screen and (max-width:500px){
-
             .form-container{
                 width: 95%;
-                margin: 20vh auto
+                /*margin: 20vh auto*/
             }
 
         }

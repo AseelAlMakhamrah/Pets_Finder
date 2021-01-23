@@ -140,23 +140,46 @@
         <th>Photo</th>
         <th>Price</th>
     </tr>
-    <c:set var="total" value="0"></c:set>
-    <c:forEach  items="${products}" var="item" >
-        <c:set var="total" value="${total + item.price}"></c:set>
-        <tr>
+<%--    <c:set var="total" value="0"></c:set>--%>
+<%--    <c:forEach  items="${products}" var="item" >--%>
+<%--        <c:set var="total" value="${total + item.price}"></c:set>--%>
+<%--        <tr>--%>
 
-            <td>${item.id }</td>
-            <td>${item.name}</td>
-            <td>
-                <img src="${pageContext.request.contextPath }/${item.product.photo }" width="120">
-            </td>
-            <td>${item.price }</td>
-        </tr>
-    </c:forEach>
+<%--            <td>${item.id }</td>--%>
+<%--            <td>${item.name}</td>--%>
+<%--            <td>--%>
+<%--                <img src="${pageContext.request.contextPath }/${item.product.photo }" width="120">--%>
+<%--            </td>--%>
+<%--            <td>${item.price }</td>--%>
+<%--        </tr>--%>
+<%--    </c:forEach>--%>
+<%--    <tr>--%>
+<%--        <td colspan="4" align="right">Total</td>--%>
+<%--        <td>${total }</td>--%>
+<%--    </tr>--%>
     <tr>
-        <td colspan="4" align="right">Total</td>
-        <td>${total }</td>
+        <td>3</td>
+        <td>shoes</td>
+        <td><img src="img/shoes.jpg"  width =100 alt="..."></td>
+        <td>50 SH</td>
     </tr>
+    <tr>
+        <td>4</td>
+        <td>Cats pillow</td>
+        <td> <img src="img/makhada.jpg" width =100 alt="..."></td>
+        <td>50SH</td>
+    </tr>
+
+    <tr>
+        <td>8</td>
+        <td>jacket</td>
+        <td> <img src="img/jak4.jpg" width =100 alt="..."></td>
+        <td>40 SH</td>
+    </tr>
+    <tr>
+                <td colspan="4" align="right">Total</td>
+                <td>150 SH</td>
+            </tr>
 </table>
 </div>
     </div>
