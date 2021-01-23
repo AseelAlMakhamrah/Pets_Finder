@@ -72,4 +72,13 @@ public class UserService {
     public void deleteUser(User user){
         userRepository.deleteById(user.getId());
     }
+    public void updateUser(User user){
+        User user1 = userRepository.findById(user.getId()).orElse(null);
+        assert user1 != null;
+        user1.setFirstName(user.getFirstName());
+        user1.setLastName(user.getLastName());
+        user1.setLocation(user.getLocation());
+        user1.setPhoneNumber(user.getPhoneNumber());
+        userRepository.save(user1);
+    }
 }

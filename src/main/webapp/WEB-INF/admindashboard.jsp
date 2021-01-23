@@ -42,8 +42,6 @@
     <tr>
         <td>${user.firstName} ${user.lastName}</td>
         <td>${user.email}</td>
-
-
         <td>
             <form  method="POST" action="/delete">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -58,8 +56,6 @@
                 <input type="submit" value="make-admin"/>
             </form>
         </td>
-
-
         </c:forEach>
     <tr>
 </table>
