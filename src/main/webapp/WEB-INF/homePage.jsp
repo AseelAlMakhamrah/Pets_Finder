@@ -5,40 +5,39 @@
   Time: 4:28 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
+    <title>Home Page</title>
 </head>
 <body>
-<h1>Welcome  <c:out value="${currentUser.firstName}"></c:out></h1>
+<h1>Welcome</h1>
 
-<h1>Welcome, <c:out value="${user1.firstName}"/></h1>
-<h1>Welcome, <c:out value="${user_test}"/></h1>
+<%--<h1>Welcome2</h1>--%>
+
 
 <form id="logoutForm" method="POST" action="/logout">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="submit" value="Logout!" type="button" class="btn btn-outline-secondary"/>
 </form>
-<br>
-<br>
-<table border="1px">
-    <tr>
-        <th>Product</th>
-        <th>Price</th>
-    </tr>
-    <c:forEach items="${products}" var="product">
-    <tr>
-        <td>${product.name}</td>
-        <td>${product.price}</td>
-        </c:forEach>
-</table>
+<div class="container">
+    <c:forEach items="${pets}" var="pet">
+        /////////////img
+        <p><strong>Owner</strong> ${pet.owner.firstName}</p>
+        <p><strong>Breed</strong> ${pet.breed}</p>
+        <p><strong>Age</strong> ${pet.age}</p>
+    </c:forEach>
+</div>
 </body>
 </html>
