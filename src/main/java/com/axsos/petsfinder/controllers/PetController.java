@@ -24,9 +24,9 @@ public class PetController {
         this.userService = userService;
     }
     public Long userSessionId(HttpSession session) {
-        if(session.getAttribute("userId") == null)
+        if(session.getAttribute("user1") == null)
             return null;
-        return (Long)session.getAttribute("userId");
+        return (Long)session.getAttribute("user1");
     }
 
     @RequestMapping("/addPet")

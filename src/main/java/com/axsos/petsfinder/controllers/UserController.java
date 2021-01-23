@@ -82,6 +82,7 @@ public class UserController {
     //this method to check the login
     @RequestMapping("/login")
     public String login(@RequestParam(value="error", required=false) String error,Principal principal,HttpSession session, @RequestParam(value="logout", required=false) String logout, Model model) {
+
         if(error != null) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
